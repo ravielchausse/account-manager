@@ -1,0 +1,23 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "description": "Auth JWT",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon index.js",
+        "debug": "node-devtools index.js --whats",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Raviel Chausse",
+    "license": "ISC",
+    "dependencies": {
+        "base64url": "^2.0.0",
+        "body-parser": "^1.18.2",
+        "consign": "^0.1.6",
+        "cors": "^2.8.4",
+        "express": "^4.16.2",
+        "express-validator": "^4.3.0",
+        "moment": "^2.19.2",
+        "moment-precise-range-plugin": "^1.2.4"
+    }
+}
