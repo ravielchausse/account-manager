@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import AuthJwt from '@/auth/AuthJwt.vue'
+import User from '@/user/User.vue'
 
 Vue.use(Router)
 
@@ -9,7 +9,12 @@ export default new Router({
     routes: [
         {
             path: '/',
-            component: AuthJwt
+            redirect: { name: 'user.main' }
+        },
+        {
+            path: '/user',
+            name: 'user.main',
+            component: User
         }
     ]
 })

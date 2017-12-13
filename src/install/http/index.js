@@ -2,7 +2,7 @@ import Vue from 'vue'
 import axios from 'axios'
 
 const http = axios.create({
-    baseURL: 'http://localhost:3001/',
+    baseURL: 'http://localhost:3000/',
     headers: {
         'Content-Type': 'application/json',
         'accept': '*/*'
