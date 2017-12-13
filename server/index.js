@@ -3,6 +3,11 @@
 * @author Raviel Chausse Silveira
 */
 
+const dotenv = require('dotenv');
+dotenv.config({ path: './.env' });
+global.$env = process.env;
+const { NODE_PORT } = $env;
+
 global.$mixin = require("./mixin");
 
 global.$consign = require("consign");
@@ -13,6 +18,6 @@ global.$path = require("path");
 global.BASE_PATH = $path.resolve(__dirname, "./")
 global.APP_PATH = $path.join(BASE_PATH, "/app");
 
-let app = require(APP_PATH);
+const app = require(APP_PATH);
 
-app.listen(3001, () => console.log("Servidor rodando na porta %s.", 3001) );
+app.listen(NODE_PORT, () => console.log("Servidor rodando na porta %s.", NODE_PORT) );

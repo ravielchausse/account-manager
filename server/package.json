@@ -15,9 +15,11 @@
         "body-parser": "^1.18.2",
         "consign": "^0.1.6",
         "cors": "^2.8.4",
+        "dotenv": "^4.0.0",
         "express": "^4.16.2",
         "express-validator": "^4.3.0",
         "moment": "^2.19.2",
-        "moment-precise-range-plugin": "^1.2.4"
+        "moment-precise-range-plugin": "^1.2.4",
+        "mysql": "^2.15.0"
     }
 }
