@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import BalanceMain from '@/balance/Main.vue'
+import BalanceList from '@/balance/List.vue'
+
 import User from '@/user/User.vue'
 
 Vue.use(Router)
@@ -10,6 +13,19 @@ export default new Router({
         {
             path: '/',
             redirect: { name: 'user.main' }
+        },
+        {
+            path: '/balance',
+            name: 'balance.main',
+            component: BalanceMain,
+            redirect: { name: 'balance.list' },
+            children: [
+                {
+                    path: '/balance/list',
+                    name: 'balance.list',
+                    component: BalanceList
+                }
+            ]
         },
         {
             path: '/user',
