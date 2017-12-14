@@ -12,7 +12,7 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: { name: 'user.main' }
+            redirect: { name: 'balance.main' }
         },
         {
             path: '/balance',

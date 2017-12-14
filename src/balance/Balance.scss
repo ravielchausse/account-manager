@@ -26,7 +26,7 @@
 	    position:absolute;
 	    opacity: 0.3;
 	    transition: all 0.4s ease-in-out;
-	    width: 72px;
+	    width: 64px;
 	}
 	.material-switch > label::after {
 	    background: rgb(255, 255, 255);
@@ -34,7 +34,7 @@
 	    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 	    content: '';
 	    height: 32px;
-	    left: -4px;
+	    left: 0;
 	    margin-top: -8px;
 	    position: absolute;
 	    top: -4px;
@@ -47,6 +47,17 @@
 	}
 	.material-switch > input[type="checkbox"]:checked + label::after {
 	    background: inherit;
-	    left: 48px;
+	    left: 40px;
+	}
+	
+	.row {
+		margin: 0;
+		padding: 0;
+	}
+
+	.col-sm-1, .col-sm-2, .col-sm-3, 
+	.col-sm-4, .col-sm-5, .col-sm-6 {
+		margin: 0;		
+		padding: 3px;
 	}
 }
