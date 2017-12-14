@@ -42,8 +42,8 @@
                                 <label for="bal_continued">Contínuo</label>
                                 <!-- <input type="checkbox" id="bal_continued" name="bal_continued" v-model="payload.bal_continued"> -->
                                 <div class="material-switch">
-                                    <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
-                                    <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                                    <input type="checkbox" id="bal_continued" name="bal_continued" v-model="payload.bal_continued" />
+                                    <label for="bal_continued" class="label-success"></label>
                                 </div>
                             </div>
                         </div>
@@ -51,8 +51,8 @@
                 </form>
             </div>
             <div slot="footer" class="form-group">
-                <button class="btn btn-danger" @click="onCancel($event)">Cancelar</button>
-                <button class="btn btn-success" @click="onSubmit($event)">Cadastrar</button>
+                <button class="btn btn-lg btn-danger" @click="onCancel($event)">Cancelar</button>
+                <button class="btn btn-lg btn-success" @click="onSubmit($event)">Cadastrar</button>
             </div>
         </modal>
     </div>
@@ -80,7 +80,7 @@ export default {
         }
     },
     methods: {
-        onCancel () {
+        onCancel (evt) {
             this.payload = {}
             this.$emit('close')
         },
