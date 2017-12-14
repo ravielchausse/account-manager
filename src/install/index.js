@@ -1,1 +1,3 @@
+import './components'
+
 import './http'

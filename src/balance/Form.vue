@@ -24,6 +24,30 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label for="priority">Prioridade</label>
+                                <v-select id="priority" name="priority" :options="priorityLst" label="pri_name" v-model="payload.priority" />
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label for="purchaser">Comprador</label>
+                                <v-select id="purchaser" name="purchaser" :options="purchaserLst" label="pur_name" v-model="payload.purchaser" />
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="bal_continued">Contínuo</label>
+                                <!-- <input type="checkbox" id="bal_continued" name="bal_continued" v-model="payload.bal_continued"> -->
+                                <div class="material-switch">
+                                    <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
+                                    <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div slot="footer" class="form-group">
@@ -50,6 +74,8 @@ export default {
     },
     data () {
         return {
+            purchaserLst: [],
+            priorityLst: [],
             payload: {}
         }
     },
