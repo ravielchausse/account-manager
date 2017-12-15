@@ -3,7 +3,13 @@
         
         <button id="show-modal" class="btn btn-primary" @click="showModal = true">Nova Compra</button>
         
-        <balance-form :showModal="showModal" @close="showModal = false" />
+        <balance-form 
+            :showModal="showModal" 
+            :purchaserLst="purchaserLst" 
+            :priorityLst="priorityLst" 
+            :paymentLst="paymentLst" 
+            :skillLst="skillLst" 
+            @close="showModal = false" />
 
     </div>
 </template>
@@ -15,7 +21,25 @@ export default {
     components: { BalanceForm },
     data () {
         return {
-            showModal: false
+            showModal: false,
+            purchaserLst: [],
+            priorityLst: [],
+            paymentLst: [],
+            skillLst: []
+        }
+    },
+    mounted () {
+        this.onGetLookups()
+    },
+    methods: {
+        onGetLookups () {
+            this.$http.get('lookup').then(this.onAfterGetLookups).catch(this.$throwException)
+        },
+        onAfterGetLookups ({ data }) {
+            this.purchaserLst = data.purchaserLst
+            this.priorityLst = data.priorityLst
+            this.paymentLst = data.paymentLst
+            this.skillLst = data.skillLst
         }
     }
 }
