@@ -34,19 +34,25 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="skill">Competência</label>
+                                <v-select id="skill" name="skill" :options="skillLst" label="ski_value" v-model="payload.skill" />
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <label for="priority">Prioridade</label>
                                 <v-select id="priority" name="priority" :options="priorityLst" label="pri_name" v-model="payload.priority" />
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <label for="payment">Forma de Pagamento</label>
                                 <v-select id="payment" name="payment" :options="paymentLst" label="pay_name" v-model="payload.payment" />
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <label for="purchaser">Comprador</label>
                                 <v-select id="purchaser" name="purchaser" :options="purchaserLst" label="pur_name" v-model="payload.purchaser" />
