@@ -7,31 +7,48 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="skill">Competência</label>
-                                <v-select id="skill" name="skill" :options="skillLst" label="ski_value" v-model="payload.skill" />
+                                <label for="select-skills">Compotência: </label>
+                                <select id="select-skills" name="select-skills" class="form-control">
+                                    <option value="0" selected></option>
+                                    <option v-for="skill in skillLst" :value="skill.ski_id">{{ skill.ski_value }}</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="bal_date">Data</label>
-                                <input type="text" id="bal_date" name="bal_date" class="form-control" v-model="payload.bal_date">
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="form-group checkbox--continued">
-                                <label for="bal_continued">Contínuo</label>
-                                <div class="material-switch">
-                                    <input type="checkbox" id="bal_continued" name="bal_continued" v-model="payload.bal_continued" />
-                                    <label for="bal_continued" class="label-success"></label>
-                                </div>
+                                <label for="select-purchasers">Comprador: </label>
+                                <select id="select-purchasers" name="select-purchasers" class="form-control">
+                                    <option value="0" selected></option>
+                                    <option v-for="purchaser in purchaserLst" :value="purchaser.pur_id">{{ purchaser.pur_name }}</option>
+                                </select>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="bal_account">Compra</label>
-                                <input type="text" id="bal_account" name="bal_account" class="form-control" v-model="payload.bal_account">
+                                <label for="select-priorities">Prioridade: </label>
+                                <select id="select-priorities" name="select-priorities" class="form-control">
+                                    <option value="0" selected></option>
+                                    <option v-for="priority in priorityLst" :value="priority.pri_id">{{ priority.pri_name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="select-payments">Forma de Pagamento: </label>
+                                <select id="select-payments" name="select-payments" class="form-control">
+                                    <option value="0" selected></option>
+                                    <option v-for="payment in paymentLst" :value="payment.pay_id">{{ payment.pay_name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="bal_date">Data</label>
+                                <input type="date" id="bal_date" name="bal_date" class="form-control" v-model="payload.bal_date">
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -46,27 +63,24 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-9">
                             <div class="form-group">
-                                <label for="priority">Prioridade</label>
-                                <v-select id="priority" name="priority" :options="priorityLst" label="pri_name" v-model="payload.priority" />
+                                <label for="bal_account">Compra</label>
+                                <input type="text" id="bal_account" name="bal_account" class="form-control" v-model="payload.bal_account">
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="payment">Forma de Pagamento</label>
-                                <v-select id="payment" name="payment" :options="paymentLst" label="pay_name" v-model="payload.payment" />
+                        <div class="col-sm-3">
+                            <div class="form-group checkbox--continued">
+                                <label for="bal_continued">Contínuo</label>
+                                <div class="material-switch">
+                                    <input type="checkbox" id="bal_continued" name="bal_continued" v-model="payload.bal_continued" />
+                                    <label for="bal_continued" class="badge-success"></label>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="purchaser">Comprador</label>
-                                <v-select id="purchaser" name="purchaser" :options="purchaserLst" label="pur_name" v-model="payload.purchaser" />
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
                                 <label for="bal_comments">Observações</label>
                                 <input type="text" id="bal_comments" name="bal_comments" class="form-control" v-model="payload.bal_comments">

@@ -2,12 +2,20 @@
     <div id="balance" class="container">
         <div class="row">
             <div class="col-md-3">
+                <button id="show-filter" class="btn btn-info form-control" @click="showFilter = !showFilter">
+                    {{ showFilter ? 'Ocultar' : 'Exibir' }} Filtros
+                </button>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <button id="show-modal" class="btn btn-primary form-control" @click="showModal = true">Nova Compra</button>
+            </div>
+        </div>
+        <div class="row">
+            <div :class="{ 'col-md-3': showFilter, 'd-none': !showFilter }">
                 <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                <form name="form-filters" class="border border-dark">
-                    <div class="form-group">
-                        <label for="show-modal"></label>
-                        <button id="show-modal" class="btn btn-primary form-control" @click.prevent.default="showModal = true">Nova Compra</button>
-                    </div>
+                <form name="form-filters" class="border-filter">
                     <div class="form-group">
                         <label for="select-purchasers">Comprador: </label>
                         <select id="select-purchasers" name="select-purchasers" class="form-control">
@@ -36,21 +44,21 @@
                             <option v-for="skill in skillLst" :value="skill.ski_id">{{ skill.ski_value }}</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="btn-search"></label>
-                        <button id="btn-search" class="btn btn-success form-control" @click.prevent.default="onSearch($event)">Pesquisar</button>
-                    </div>
+                    <button id="btn-search" class="btn btn-success form-control" @click.prevent.default="onSearch($event)">Pesquisar</button>
                 </form>
             </div>
-            <div class="col-md-9">
-                <table class="table">
-                    <tr>
-                        <th>Comprador</th>
-                        <th>Prioridade</th>
-                        <th>Forma de Pagamento</th>
-                        <th>Compotência</th>
-                    </tr>
-                </table>
+            <div :class="{ 'col-md-9': showFilter, 'col-md-12': !showFilter }">
+                <div v-if="balanceLst.length > 0">
+                    <table class="table">
+                        <tr>
+                            <th>Comprador</th>
+                            <th>Prioridade</th>
+                            <th>Forma de Pagamento</th>
+                            <th>Compotência</th>
+                        </tr>
+                    </table>
+                </div>
+                <div v-else class="alert alert-warning">Nenhum Registro Encontrado!</div>
             </div>
         </div>
 
@@ -71,6 +79,8 @@ export default {
     components: { BalanceForm },
     data () {
         return {
+            balanceLst: [],
+            showFilter: false,
             showModal: false,
             purchaserLst: [],
             priorityLst: [],
