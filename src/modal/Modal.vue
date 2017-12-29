@@ -45,11 +45,11 @@
         vertical-align: middle;
     }
     .modal-container {
-        width: 600px;
+        width: 576px;
         margin: 0px auto;
         padding: 1px;
         background-color: #fff;
-        border-radius: 2px;
+        border-radius: 10px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
         transition: all .3s ease;
         font-family: Helvetica, Arial, sans-serif;

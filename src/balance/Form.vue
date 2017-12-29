@@ -89,9 +89,9 @@
                     </div>
                 </form>
             </div>
-            <div slot="footer" class="form-group">
-                <button class="btn btn-lg btn-danger" @click="onCancel($event)">Cancelar</button>
-                <button class="btn btn-lg btn-success" @click="onSubmit($event)">Cadastrar</button>
+            <div slot="footer">
+                <button class="btn btn-danger" @click="onCancel($event)">Cancelar</button>
+                <button class="btn btn-success" @click="onSubmit($event)">Cadastrar</button>
             </div>
         </modal>
     </div>
