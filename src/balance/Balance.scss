@@ -90,4 +90,56 @@
 			padding: 2px 15px;
 		}
 	}
+
+	.datagrid-container {
+	    display: table;
+	    width: 100%;
+	    .datagrid-header {
+	        display: table-row;
+	        font-size: 14px;
+	        color: #fff;
+	        width: 100%;
+	        &:last-child {
+	            span {
+	                border-bottom-width: 0;
+	            }
+	        }
+	        span {
+	            display: table-cell;
+	            border: 1px #ccc solid;
+	            padding: 2px;
+	            text-align: center;
+	        }
+	    }
+	    .datagrid-context {
+	        display: table-row;
+	        font-size: 12px;
+	        width: 100%;
+	        span {
+	            display: table-cell;
+	            border: 1px #ccc solid;
+	            cursor: pointer;
+	            padding: 2px;
+	            text-align: center;
+	        }
+	    }
+	    .datagrid-context:nth-child(odd) {
+	        background-color: #d9edf7;
+	    }
+	    .bg-selected {
+	        background-color: #fcf8e3 !important;
+	    }
+	    .success {
+	        color: #337ab7;
+	        &:hover {
+	            color: #4cae4c;
+	        }
+	    }
+	    .danger {
+	        color: #337ab7;
+	        &:hover {
+	            color: #d9534f;
+	        }
+	    }
+	}
 }

@@ -20,7 +20,7 @@ module.exports = {
         let user = new UserModel(use_name, use_login, use_email);
         let context = new UserContext();
         context.store(user)
-        .then((id) => res.status(201).send(id))
+        .then((id) => { res.status(201).json({ id }) })
         .catch($mixin.throwException);
     }
 }

@@ -8,7 +8,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="select-skills">Compotência: </label>
-                                <select id="select-skills" name="select-skills" class="form-control">
+                                <select id="select-skills" name="select-skills" class="form-control" v-model="payload.ski_id">
                                     <option value="0" selected></option>
                                     <option v-for="skill in skillLst" :value="skill.ski_id">{{ skill.ski_value }}</option>
                                 </select>
@@ -17,7 +17,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="select-purchasers">Comprador: </label>
-                                <select id="select-purchasers" name="select-purchasers" class="form-control">
+                                <select id="select-purchasers" name="select-purchasers" class="form-control" v-model="payload.pur_id">
                                     <option value="0" selected></option>
                                     <option v-for="purchaser in purchaserLst" :value="purchaser.pur_id">{{ purchaser.pur_name }}</option>
                                 </select>
@@ -28,7 +28,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="select-priorities">Prioridade: </label>
-                                <select id="select-priorities" name="select-priorities" class="form-control">
+                                <select id="select-priorities" name="select-priorities" class="form-control" v-model="payload.pri_id">
                                     <option value="0" selected></option>
                                     <option v-for="priority in priorityLst" :value="priority.pri_id">{{ priority.pri_name }}</option>
                                 </select>
@@ -37,7 +37,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="select-payments">Forma de Pagamento: </label>
-                                <select id="select-payments" name="select-payments" class="form-control">
+                                <select id="select-payments" name="select-payments" class="form-control" v-model="payload.pay_id">
                                     <option value="0" selected></option>
                                     <option v-for="payment in paymentLst" :value="payment.pay_id">{{ payment.pay_name }}</option>
                                 </select>
@@ -139,8 +139,14 @@ export default {
             this.payload = {}
             this.$emit('close')
         },
+        onAfterSubmit ({ data }) {
+            this.payload = {}
+            this.$toasted.success('Compra salva com sucesso!').goAway(1500)
+            this.$emit('reload')
+            this.$emit('close')
+        },
         onSubmit (evt) {
-            console.log({ evt, payload: this.payload })
+            this.$http.post('balance', this.payload).then(this.onAfterSubmit).catch(this.$throwException)
         }
     }
 }

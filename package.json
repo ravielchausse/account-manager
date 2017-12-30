@@ -11,8 +11,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "accounting": "^0.4.1",
     "axios": "^0.17.1",
     "base64url": "^2.0.0",
+    "moment": "^2.20.1",
+    "sweetalert": "^2.1.0",
     "vue": "^2.5.13",
     "vue-router": "^3.0.1",
     "vue-select": "^2.3.1",

@@ -3,9 +3,10 @@
 * @author Raviel Chausse Silveira
 */
 
-let AuthController = require('./controller/auth.js');
-let LookupController = require('./controller/lookup.js');
-let UserController = require('./controller/user.js');
+const AuthController = require('./controller/auth.js');
+const LookupController = require('./controller/lookup.js');
+const UserController = require('./controller/user.js');
+const BalanceController = require('./controller/balance.js');
 
 module.exports = (app) => {
 
@@ -17,5 +18,7 @@ module.exports = (app) => {
 
     app.get("/user", UserController.index);
     app.post("/user", UserController.store);
-    
+
+    app.get("/balance", BalanceController.index);
+    app.post("/balance", BalanceController.store);    
 };
