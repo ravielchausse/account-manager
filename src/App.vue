@@ -1,12 +1,37 @@
 <template>
     <div id="app">
-        <router-view></router-view>
+        <template v-if="logged">
+            <nav id="navbar">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3">
+                        <a href="">Sair</a>
+                    </div>
+                </div>
+            </nav>
+            <nav id="sidebar">
+                <ul>
+                    <router-link tag="li" :to="{ name: 'account.main' }">Grupo de Contas</router-link>
+                    <router-link tag="li" :to="{ name: 'balance.main' }">Fluxo de Caixa</router-link>
+                </ul>
+            </nav>
+            <div id="view-container" class="container">
+                <router-view></router-view>
+            </div>
+        </template>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'app'
+    name: 'app',
+    data () {
+        return {
+            logged: true
+        }
+    }
 }
 </script>
 

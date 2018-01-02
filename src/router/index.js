@@ -36,7 +36,7 @@ export default new Router({
         },
         {
             path: '/account-group',
-            name: 'accountGroup.main',
+            name: 'account.main',
             component: AccountGroup
         }
     ]

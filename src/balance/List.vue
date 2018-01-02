@@ -1,5 +1,5 @@
 <template lang="html">
-    <div id="balance" class="container">
+    <div id="balance">
         <div class="row">
             <div class="col-md-3">
                 <button id="show-filter" class="btn btn-info form-control" @click="showFilter = !showFilter">

@@ -1,6 +1,5 @@
 <template lang="html">
-    <div id="account-group" class="container">
-        <hr>
+    <div id="account-group">
         <form name="formAccountGroup" class="row">
             <div class="col-md-3">
                 <label for="name" class="col-form-label">Grupo de Contas: </label>
@@ -65,8 +64,8 @@ export default {
             this.getList()
         },
         onSubmit (evt) {
-            console.log({ evt })
-            // this.$http.post('account-group', this.payload).then(this.afterSubmit).catch(this.$throwException)
+            // console.log({ evt })
+            this.$http.post('account-group', this.payload).then(this.afterSubmit).catch(this.$throwException)
         }
     }
 }
