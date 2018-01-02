@@ -36,7 +36,6 @@
         width: 100px;
         max-width: 150px;
         background-color: #464a4c;
-        padding: 10px;
 
         ul {
             margin: 0;
@@ -46,11 +45,17 @@
                 cursor: pointer;
                 font-size: 13px;
                 list-style: none;
-                padding: 5px;
+                padding: 10px 20px;
                 color: #fff;
 
-                &:hover {
+                &.router-link-active {
+                    background-color: #292b2c;
                     color: #5cb85c;
+                }
+
+                &:hover {
+                    background-color: #000;
+                    color: #0275d8;
                 }
             }
         }
