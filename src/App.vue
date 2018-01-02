@@ -3,11 +3,12 @@
         <template v-if="logged">
             <nav id="navbar">
                 <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3">
-                        <a href="">Sair</a>
+                    <div class="col-md-12">
+                        <span>
+                            <icon name="user-circle-o" scale="2" />
+                            Raviel Chausse Silveira
+                        </span>
+                        <a href="#" class="logout">Sair</a>
                     </div>
                 </div>
             </nav>
