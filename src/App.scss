@@ -75,10 +75,12 @@
 
     #view-container {
         box-sizing: border-box;
+        background-color: #f7f7f7;
         display: inline-block;
         position: fixed;
-        top: 60px;
-        height: calc(100% - 60px);
+        padding-top: 12px;
+        top: 50px;
+        height: calc(100% - 50px);
         left: 150px;
         width: calc(100% - 150px);
     }
