@@ -6,6 +6,8 @@ import BalanceList from '@/balance/List.vue'
 
 import User from '@/user/User.vue'
 
+import AccountGroup from '@/foundation/account-group/AccountGroup.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -31,6 +33,11 @@ export default new Router({
             path: '/user',
             name: 'user.main',
             component: User
+        },
+        {
+            path: '/account-group',
+            name: 'accountGroup.main',
+            component: AccountGroup
         }
     ]
 })
