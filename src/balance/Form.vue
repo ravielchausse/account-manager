@@ -16,10 +16,27 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="select-purchasers">Comprador: </label>
-                                <select id="select-purchasers" name="select-purchasers" class="form-control" v-model="payload.pur_id">
+                                <label for="bal_date">Data</label>
+                                <input type="date" id="bal_date" name="bal_date" class="form-control" v-model="payload.bal_date">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="select-payments">Forma de Pagamento: </label>
+                                <select id="select-payments" name="select-payments" class="form-control" v-model="payload.pay_id">
                                     <option value="0" selected></option>
-                                    <option v-for="purchaser in purchaserLst" :value="purchaser.pur_id">{{ purchaser.pur_name }}</option>
+                                    <option v-for="payment in paymentLst" :value="payment.pay_id">{{ payment.pay_name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="select-account">Grupo de Contas: </label>
+                                <select id="select-account" name="select-account" class="form-control" v-model="payload.agr_id">
+                                    <option value="0" selected></option>
+                                    <option v-for="accountGroup in accountGroupLst" :value="accountGroup.agr_id">{{ accountGroup.agr_name }}</option>
                                 </select>
                             </div>
                         </div>
@@ -36,28 +53,27 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="select-payments">Forma de Pagamento: </label>
-                                <select id="select-payments" name="select-payments" class="form-control" v-model="payload.pay_id">
+                                <label for="select-purchasers">Comprador: </label>
+                                <select id="select-purchasers" name="select-purchasers" class="form-control" v-model="payload.pur_id">
                                     <option value="0" selected></option>
-                                    <option v-for="payment in paymentLst" :value="payment.pay_id">{{ payment.pay_name }}</option>
+                                    <option v-for="purchaser in purchaserLst" :value="purchaser.pur_id">{{ purchaser.pur_name }}</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-8">
                             <div class="form-group">
-                                <label for="bal_date">Data</label>
-                                <input type="date" id="bal_date" name="bal_date" class="form-control" v-model="payload.bal_date">
+                                <label for="bal_account">Compra</label>
+                                <input type="text" id="bal_account" name="bal_account" class="form-control" v-model="payload.bal_account">
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="bal_value">Valor</label>
                                 <div class="input-group">
                                     <div class="input-group-addon">R$</div>
                                     <input type="text" id="bal_value" name="bal_value" class="form-control" v-model="payload.bal_value">
-                                    <div class="input-group-addon">.00</div>
                                 </div>
                             </div>
                         </div>
@@ -65,8 +81,8 @@
                     <div class="row">
                         <div class="col-sm-9">
                             <div class="form-group">
-                                <label for="bal_account">Compra</label>
-                                <input type="text" id="bal_account" name="bal_account" class="form-control" v-model="payload.bal_account">
+                                <label for="bal_comments">Observações</label>
+                                <input type="text" id="bal_comments" name="bal_comments" class="form-control" v-model="payload.bal_comments">
                             </div>
                         </div>
                         <div class="col-sm-3">
@@ -76,14 +92,6 @@
                                     <input type="checkbox" id="bal_continued" name="bal_continued" v-model="payload.bal_continued" />
                                     <label for="bal_continued" class="badge-success"></label>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label for="bal_comments">Observações</label>
-                                <input type="text" id="bal_comments" name="bal_comments" class="form-control" v-model="payload.bal_comments">
                             </div>
                         </div>
                     </div>
@@ -107,6 +115,11 @@ export default {
             type: Boolean,
             required: true,
             default () { return false }
+        },
+        accountGroupLst: {
+            type: Array,
+            required: true,
+            default () { return [] }
         },
         purchaserLst: {
             type: Array,

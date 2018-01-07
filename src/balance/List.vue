@@ -17,30 +17,37 @@
                 <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                 <form name="form-filters" class="border-filter">
                     <div class="form-group">
+                        <label for="select-account">Grupo de Contas: </label>
+                        <select id="select-account" name="select-account" class="form-control">
+                            <option value="0" selected>Selecione</option>
+                            <option v-for="accountGroup in accountGroupLst" :value="accountGroup.agr_id">{{ accountGroup.agr_name }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="select-skills">Compotência: </label>
                         <select id="select-skills" name="select-skills" class="form-control">
-                            <option value="0" selected></option>
+                            <option value="0" selected>Selecione</option>
                             <option v-for="skill in skillLst" :value="skill.ski_id">{{ skill.ski_value }}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="select-purchasers">Comprador: </label>
                         <select id="select-purchasers" name="select-purchasers" class="form-control">
-                            <option value="0" selected></option>
+                            <option value="0" selected>Selecione</option>
                             <option v-for="purchaser in purchaserLst" :value="purchaser.pur_id">{{ purchaser.pur_name }}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="select-priorities">Prioridade: </label>
                         <select id="select-priorities" name="select-priorities" class="form-control">
-                            <option value="0" selected></option>
+                            <option value="0" selected>Selecione</option>
                             <option v-for="priority in priorityLst" :value="priority.pri_id">{{ priority.pri_name }}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="select-payments">Forma de Pagamento: </label>
                         <select id="select-payments" name="select-payments" class="form-control">
-                            <option value="0" selected></option>
+                            <option value="0" selected>Selecione</option>
                             <option v-for="payment in paymentLst" :value="payment.pay_id">{{ payment.pay_name }}</option>
                         </select>
                     </div>
@@ -82,6 +89,7 @@
 
         <balance-form 
             :showModal="showModal" 
+            :accountGroupLst="accountGroupLst" 
             :purchaserLst="purchaserLst" 
             :priorityLst="priorityLst" 
             :paymentLst="paymentLst" 
@@ -103,6 +111,7 @@ export default {
             balanceLst: [],
             showFilter: false,
             showModal: false,
+            accountGroupLst: [],
             purchaserLst: [],
             priorityLst: [],
             paymentLst: [],
@@ -120,6 +129,7 @@ export default {
             this.$http.get('lookup').then(this.onAfterGetLookups).catch(this.$throwException)
         },
         onAfterGetLookups ({ data }) {
+            this.accountGroupLst = data.accountGroupLst
             this.purchaserLst = data.purchaserLst
             this.priorityLst = data.priorityLst
             this.paymentLst = data.paymentLst

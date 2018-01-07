@@ -14,6 +14,7 @@ module.exports = class LookupContext extends Context {
     list (filter = []) {
         return new Promise((accept, reject) => {
             let query = `
+            SELECT * FROM agr_account_groups;
             SELECT * FROM pay_payment_methods;
             SELECT * FROM pri_priorities;
             SELECT * FROM pur_purchasers;
@@ -21,10 +22,11 @@ module.exports = class LookupContext extends Context {
             `;
             this.get(query, filter).then(results => {
                 accept({
-                    paymentLst: results[0],
-                    priorityLst: results[1],
-                    purchaserLst: results[2],
-                    skillLst: results[3]
+                    accountGroupLst: results[0],
+                    paymentLst: results[1],
+                    priorityLst: results[2],
+                    purchaserLst: results[3],
+                    skillLst: results[4]
                 });
             }).catch(reject);
         });
