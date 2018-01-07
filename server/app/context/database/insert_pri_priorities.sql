@@ -1,4 +1,4 @@
-INSERT INTO `account_manager`.`pri_priorities` 
-(`pri_name`) 
+INSERT INTO `pri_priorities` 
+(`pri_id`, `pri_name`) 
 VALUES 
-('Essencial'),('Necessário'),('Desnecessário');
+(1, 'Essencial'),(2, 'Necessário'),(3, 'Desnecessário');

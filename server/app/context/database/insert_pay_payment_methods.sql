@@ -1,4 +1,4 @@
-INSERT INTO `account_manager`.`pay_payment_methods` 
-(`pay_name`) 
+INSERT INTO `pay_payment_methods` 
+(`pay_id`, `pay_name`) 
 VALUES 
-('Dinheiro'),('Crédito'),('Débito');
+(1, 'Dinheiro'),(2, 'Crédito'),(3, 'Débito');

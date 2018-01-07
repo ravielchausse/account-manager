@@ -1,4 +1,4 @@
-INSERT INTO `account_manager`.`pur_purchasers` 
-(`pur_name`) 
+INSERT INTO `pur_purchasers` 
+(`pur_id`, `pur_name`) 
 VALUES 
-('Casa'),('Mayara'),('Raviel'),('Moana');
+(1, 'Casa'),(2, 'Mayara'),(3, 'Raviel'),(4, 'Moana');
