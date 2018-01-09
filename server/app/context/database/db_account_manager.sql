@@ -27,8 +27,8 @@ CREATE TABLE IF NOT EXISTS `account_manager`.`use_users` (
 CREATE TABLE IF NOT EXISTS `account_manager`.`pay_payment_methods` (
     `pay_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
     `pay_name` VARCHAR(100) NOT NULL,
-    `pay_created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `pay_status` BIT(1) NOT NULL DEFAULT 1,
+    `pay_created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`pay_id`),
     UNIQUE INDEX `pay_name_UNIQUE` (`pay_name` ASC)
 )  ENGINE=INNODB DEFAULT CHARACTER SET=UTF8;
