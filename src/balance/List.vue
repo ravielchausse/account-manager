@@ -45,10 +45,10 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="select-payments">Forma de Pagamento: </label>
-                        <select id="select-payments" name="select-payments" class="form-control">
+                        <label for="select-payment-methods">Forma de Pagamento: </label>
+                        <select id="select-payment-methods" name="select-payment-methods" class="form-control">
                             <option value="0" selected>Selecione</option>
-                            <option v-for="payment in paymentLst" :value="payment.pay_id">{{ payment.pay_name }}</option>
+                            <option v-for="paymentMethod in paymentMethodLst" :value="paymentMethod.pay_id">{{ paymentMethod.pay_name }}</option>
                         </select>
                     </div>
                     <button id="btn-search" class="btn btn-success form-control" @click.prevent.default="onSearch($event)">Pesquisar</button>
@@ -73,7 +73,7 @@
                                 @dblclick="onEdit(balance)">
                                 <span>{{ balance.bal_id_skills }}</span>
                                 <span>{{ balance.bal_id_priorities }}</span>
-                                <span>{{ balance.bal_id_payment_methods }}</span>
+                                <span>{{ balance.bal_id_paymentMethod_methods }}</span>
                                 <span>{{ balance.bal_id_purchasers }}</span>
                                 <span>{{ balance.bal_account }}</span>
                                 <span>{{ balance.bal_continued ? 'Sim' : 'Não' }}</span>
@@ -90,9 +90,11 @@
         <balance-form 
             :showModal="showModal" 
             :accountGroupLst="accountGroupLst" 
-            :purchaserLst="purchaserLst" 
+            :accountTypeLst="accountTypeLst" 
+            :paymentMethodLst="paymentMethodLst" 
+            :paymentTermLst="paymentTermLst" 
             :priorityLst="priorityLst" 
-            :paymentLst="paymentLst" 
+            :purchaserLst="purchaserLst" 
             :skillLst="skillLst" 
             @reload="onGetList"
             @close="showModal = false" />
@@ -114,7 +116,7 @@ export default {
             accountGroupLst: [],
             purchaserLst: [],
             priorityLst: [],
-            paymentLst: [],
+            paymentMethodLst: [],
             skillLst: []
         }
     },
@@ -129,10 +131,12 @@ export default {
             this.$http.get('lookup').then(this.onAfterGetLookups).catch(this.$throwException)
         },
         onAfterGetLookups ({ data }) {
-            this.accountGroupLst = data.accountGroupLst
+            // this.accountGroupLst = data.accountGroupLst
+            this.accountTypeLst = data.accountTypeLst
             this.purchaserLst = data.purchaserLst
             this.priorityLst = data.priorityLst
-            this.paymentLst = data.paymentLst
+            this.paymentMethodLst = data.paymentMethodLst
+            this.paymentTermLst = data.paymentTermLst
             this.skillLst = data.skillLst
             this.onGetList()
         },

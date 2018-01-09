@@ -24,19 +24,39 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="select-payments">Forma de Pagamento: </label>
-                                <select id="select-payments" name="select-payments" class="form-control" v-model="payload.pay_id">
+                                <label for="select-payment-methods">Forma de Pagamento: </label>
+                                <select id="select-payment-methods" name="select-payment-methods" class="form-control" v-model="payload.pay_id">
                                     <option value="0" selected></option>
-                                    <option v-for="payment in paymentLst" :value="payment.pay_id">{{ payment.pay_name }}</option>
+                                    <option v-for="paymentMethod in paymentMethodLst" :value="paymentMethod.pay_id">{{ paymentMethod.pay_name }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="select-account">Grupo de Contas: </label>
-                                <select id="select-account" name="select-account" class="form-control" v-model="payload.agr_id">
+                                <label for="select-payment-terms">Condição de Pagamento: </label>
+                                <select id="select-payment-terms" name="select-payment-terms" class="form-control" v-model="payload.pat_id">
+                                    <option value="0" selected></option>
+                                    <option v-for="paymentTerm in paymentTermLst" :value="paymentTerm.pat_id">{{ paymentTerm.pat_name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="select-account-groups">Grupo de Contas: </label>
+                                <select id="select-account-groups" name="select-account-groups" class="form-control" v-model="payload.agr_id">
                                     <option value="0" selected></option>
                                     <option v-for="accountGroup in accountGroupLst" :value="accountGroup.agr_id">{{ accountGroup.agr_name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="select-accounts-type">Tipo de Contas: </label>
+                                <select id="select-accounts-type" name="select-accounts-type" class="form-control" v-model="payload.acc_id">
+                                    <option value="0" selected></option>
+                                    <option v-for="accountType in accountTypeLst" :value="accountType.acc_id">{{ accountType.acc_name }}</option>
                                 </select>
                             </div>
                         </div>
@@ -79,19 +99,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-9">
+                        <div class="col-sm-12">
                             <div class="form-group">
                                 <label for="bal_comments">Observações</label>
                                 <input type="text" id="bal_comments" name="bal_comments" class="form-control" v-model="payload.bal_comments">
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group checkbox--continued">
-                                <label for="bal_continued">Contínuo</label>
-                                <div class="material-switch">
-                                    <input type="checkbox" id="bal_continued" name="bal_continued" v-model="payload.bal_continued" />
-                                    <label for="bal_continued" class="badge-success"></label>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -121,7 +132,17 @@ export default {
             required: true,
             default () { return [] }
         },
-        purchaserLst: {
+        accountTypeLst: {
+            type: Array,
+            required: true,
+            default () { return [] }
+        },
+        paymentMethodLst: {
+            type: Array,
+            required: true,
+            default () { return [] }
+        },
+        paymentTermLst: {
             type: Array,
             required: true,
             default () { return [] }
@@ -131,7 +152,7 @@ export default {
             required: true,
             default () { return [] }
         },
-        paymentLst: {
+        purchaserLst: {
             type: Array,
             required: true,
             default () { return [] }
