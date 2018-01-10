@@ -1,17 +1,38 @@
 <template lang="html">
     <div id="balance">
         <div class="row">
-            <div class="col-md-3">
-                <button id="show-filter" class="btn btn-info form-control" @click="showFilter = !showFilter">
-                    {{ showFilter ? 'Ocultar' : 'Exibir' }} Filtros
-                </button>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
             </div>
-            <div class="col-md-3"></div>
-            <div class="col-md-3"></div>
-            <div class="col-md-3">
-                <button id="show-modal" class="btn btn-primary form-control" @click="showModal = true">Nova Compra</button>
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-primary btn-block">
+                            <icon name="search" scale="1" />
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-primary btn-block" @click="showFilter = !showFilter">
+                            <icon name="filter" scale="1" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button id="show-modal" class="btn btn-primary form-control" @click="showModal = true">
+                            Nova Compra
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
+        <hr>
         <div class="row">
             <div :class="{ 'col-md-3': showFilter, 'd-none': !showFilter }">
                 <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
@@ -96,7 +117,7 @@
             :priorityLst="priorityLst" 
             :purchaserLst="purchaserLst" 
             :skillLst="skillLst" 
-            @reload="onGetList"
+            @reload="getList"
             @close="showModal = false" />
     </div>
 </template>
@@ -114,9 +135,11 @@ export default {
             showFilter: false,
             showModal: false,
             accountGroupLst: [],
-            purchaserLst: [],
-            priorityLst: [],
+            accountTypeLst: [],
             paymentMethodLst: [],
+            paymentTermLst: [],
+            priorityLst: [],
+            purchaserLst: [],
             skillLst: []
         }
     },
@@ -138,13 +161,20 @@ export default {
             this.paymentMethodLst = data.paymentMethodLst
             this.paymentTermLst = data.paymentTermLst
             this.skillLst = data.skillLst
-            this.onGetList()
+            this.getAccountGroupList()
         },
-        onGetList () {
+        getAccountGroupList () {
+            this.$http.get('account-group').then(this.afterGetAccountGroupList).catch(this.$throwException)
+        },
+        afterGetAccountGroupList ({ data }) {
+            this.accountGroupLst = data
+            this.getList()
+        },
+        getList () {
             this.filter = {}
-            this.$http.get('balance').then(this.onAfterGetList).catch(this.$throwException)
+            this.$http.get('balance').then(this.afterGetList).catch(this.$throwException)
         },
-        onAfterGetList ({ data }) {
+        afterGetList ({ data }) {
             this.balanceLst = data
         },
         onSearch (evt) {

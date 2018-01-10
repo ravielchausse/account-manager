@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import BalanceMain from '@/balance/Main.vue'
-import BalanceList from '@/balance/List.vue'
+import BalanceMain from '@/app/balance/Main.vue'
+import BalanceList from '@/app/balance/List.vue'
 
 import User from '@/user/User.vue'
 

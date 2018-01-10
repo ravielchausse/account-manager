@@ -72,9 +72,15 @@
 
 	.modal-container {
 
-		.form-group,
-		.form-group label {
+		.form-group {
+
 			margin-bottom: 1px;
+		 	
+		 	label {
+				font-size: 12px;
+				font-weight: 600;
+				margin-bottom: 1px;
+			}
 		}
 
 		.row {

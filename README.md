@@ -16,4 +16,12 @@ npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
+
+# Case error lifecycle:
+
+rm -rf node_modules
+rm package-lock.json
+npm cache clear --force
+npm install
+
 ```
