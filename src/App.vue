@@ -3,7 +3,12 @@
         <template v-if="logged">
             <nav id="navbar">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="home">
+                        <a href="#" class="dashboard">
+                            Dashboard
+                        </a>
+                    </div>
+                    <div class="menu">
                         <span>
                             <icon name="user-circle-o" scale="2" />
                             Raviel Chausse Silveira
@@ -18,9 +23,9 @@
                     <router-link tag="li" :to="{ name: 'balance.main' }">Fluxo de Caixa</router-link>
                 </ul>
             </nav>
-            <div id="view-container" class="container">
+            <main id="view-container" class="container">
                 <router-view></router-view>
-            </div>
+            </main>
         </template>
     </div>
 </template>

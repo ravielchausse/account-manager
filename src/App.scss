@@ -18,9 +18,25 @@
         .row {
             height: 100%;
             padding: 0;
-            div {
+            .home {
+                text-align: left;
+                width: 25%;
+                padding-left: 12px;
+                a.dashboard {
+                    text-decoration: none;
+                    color: #fff;
+                    font-size: 32px;
+                    padding: 12px;
+                    &:hover {
+                        background-color: #000;
+                        color: #0275d8;
+                    }
+                }
+            }
+            .menu {
                 text-align: right;
-                padding-right: 50px;
+                width: 75%;
+                padding-right: 12px;
                 span {
                     color: #fff;
                     .fa-icon {
@@ -83,14 +99,16 @@
 
     #view-container {
         box-sizing: border-box;
-        background-color: #f7f7f7;
+        background-color: #fafafa;
         display: inline-block;
         position: fixed;
         padding-top: 12px;
+        padding-bottom: 50px;
         top: 50px;
-        height: calc(100% - 50px);
+        height: 100%;
         left: 150px;
         width: calc(100% - 150px);
+        overflow-y: scroll;
     }
 
     .datagrid-container {
