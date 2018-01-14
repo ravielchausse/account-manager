@@ -180,6 +180,7 @@ export default {
             this.$emit('close')
         },
         onSubmit (evt) {
+            console.log(this.payload)
             this.$http.post('balance', this.payload).then(this.onAfterSubmit).catch(this.$throwException)
         }
     }

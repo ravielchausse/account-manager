@@ -23,7 +23,7 @@
     "vue-toasted": "^1.1.24"
   },
   "devDependencies": {
-    "autoprefixer": "^7.2.4",
+    "autoprefixer": "^7.2.5",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^7.1.1",
@@ -48,7 +48,7 @@
     "file-loader": "^1.1.6",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
-    "node-notifier": "^5.1.2",
+    "node-notifier": "^5.2.1",
     "node-sass": "^4.7.2",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "ora": "^1.2.0",
@@ -65,7 +65,7 @@
     "vue-template-compiler": "^2.5.13",
     "webpack": "^3.10.0",
     "webpack-bundle-analyzer": "^2.9.2",
-    "webpack-dev-server": "^2.10.0",
+    "webpack-dev-server": "^2.11.0",
     "webpack-merge": "^4.1.0"
   },
   "engines": {

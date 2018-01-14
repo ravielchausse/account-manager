@@ -6,15 +6,18 @@
 module.exports = class Balance {
     constructor () {
         this.bal_id = null;
-        this.bal_id_skills = null;
-        this.bal_id_priorities = null;
-        this.bal_id_payment_methods = null;
-        this.bal_id_purchasers = null;
-        this.bal_date = null;
-        this.bal_account = null;
-        this.bal_value = null;
-        this.bal_continued = null;
-        this.bal_comments = null;
+        this.bal_account
+        this.bal_comments
+        this.bal_date
+        this.bal_value
         this.bal_created_at = null;
+        
+        this.bal_id_accounts_type
+        this.bal_id_account_groups
+        this.bal_id_payment_methods
+        this.bal_id_payment_terms
+        this.bal_id_priorities
+        this.bal_id_purchasers
+        this.bal_id_skills
 	}
 }

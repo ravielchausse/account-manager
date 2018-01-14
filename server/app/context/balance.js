@@ -35,27 +35,31 @@ module.exports = class BalanceContext extends Context {
             let query = `
                 INSERT INTO bal_balance_sheets 
                 (
-                    bal_id_skills,
-                    bal_id_priorities,
+                    bal_id_accounts_type,
+                    bal_id_account_groups,
                     bal_id_payment_methods,
+                    bal_id_payment_terms,
+                    bal_id_priorities,
                     bal_id_purchasers,
+                    bal_id_skills,
                     bal_date,
                     bal_account,
                     bal_value,
-                    bal_continued,
                     bal_comments
                 ) 
-                VALUES (?,?,?,?,?,?,?,?,?);
+                VALUES (?,?,?,?,?,?,?,?,?,?,?);
             `;
             let params = [
-                balance.bal_id_skills,
-                balance.bal_id_priorities,
+                balance.bal_id_accounts_type,
+                balance.bal_id_account_groups,
                 balance.bal_id_payment_methods,
+                balance.bal_id_payment_terms,
+                balance.bal_id_priorities,
                 balance.bal_id_purchasers,
+                balance.bal_id_skills,
                 balance.bal_date,
                 balance.bal_account,
                 balance.bal_value,
-                balance.bal_continued,
                 balance.bal_comments
             ];
             this.insert(query, params).then(accept).catch(reject);
