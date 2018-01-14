@@ -85,11 +85,13 @@
                     <div class="datagrid-container">
                         <div class="datagrid-header bg-primary">
                             <span>Compotência</span>
+                            <span>Tipo</span>
+                            <span>Grupo</span>
                             <span>Prioridade</span>
                             <span>Pagamento</span>
+                            <span>Condição</span>
                             <span>Comprador</span>
                             <span>Compra</span>
-                            <span>Contínuo</span>
                             <span>Data</span>
                             <span>Valor</span>
                         </div>
@@ -97,12 +99,14 @@
                             <div class="datagrid-context" :class="{ 'bg-selected': idSelected == balance.bal_id }"
                                 @click="idSelected == balance.bal_id ? idSelected = 0 : idSelected = balance.bal_id"
                                 @dblclick="onEdit(balance)">
-                                <span>{{ balance.bal_id_skills }}</span>
-                                <span>{{ balance.bal_id_priorities }}</span>
-                                <span>{{ balance.bal_id_paymentMethod_methods }}</span>
-                                <span>{{ balance.bal_id_purchasers }}</span>
+                                <span>{{ balance.ski_value }}</span>
+                                <span>{{ balance.acc_name }}</span>
+                                <span>{{ balance.agr_name }}</span>
+                                <span>{{ balance.pri_name }}</span>
+                                <span>{{ balance.pay_name }}</span>
+                                <span>{{ balance.pat_name }}</span>
+                                <span>{{ balance.pur_name }}</span>
                                 <span>{{ balance.bal_account }}</span>
-                                <span>{{ balance.bal_continued ? 'Sim' : 'Não' }}</span>
                                 <span>{{ balance.bal_date | formatDate }}</span>
                                 <span>{{ balance.bal_value | formatMoney }}</span>
                             </div>
