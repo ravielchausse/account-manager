@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import BalanceMain from '@/app/balance/Main.vue'
+import Dashboard from '@/app/dashboard/Main.vue'
+
+import Balance from '@/app/balance/Main.vue'
 import BalanceList from '@/app/balance/List.vue'
 
 import User from '@/user/User.vue'
@@ -14,12 +16,17 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: { name: 'balance.main' }
+            redirect: { name: 'dashboard.main' }
+        },
+        {
+            path: '/dashboard',
+            name: 'dashboard.main',
+            component: Dashboard
         },
         {
             path: '/balance',
             name: 'balance.main',
-            component: BalanceMain,
+            component: Balance,
             redirect: { name: 'balance.list' },
             children: [
                 {

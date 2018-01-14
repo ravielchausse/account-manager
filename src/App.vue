@@ -4,9 +4,9 @@
             <nav id="navbar">
                 <div class="row">
                     <div class="home">
-                        <a href="#" class="dashboard">
+                        <router-link tag="a" class="dashboard" :to="{ name: 'dashboard.main' }">
                             Dashboard
-                        </a>
+                        </router-link>
                     </div>
                     <div class="menu">
                         <span>
