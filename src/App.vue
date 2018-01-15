@@ -37,6 +37,17 @@ export default {
         return {
             logged: true
         }
+    },
+    mounted () {
+        this.getLookups()
+    },
+    methods: {
+        getLookups () {
+            this.$http.get('lookup').then(this.afterGetLookups).catch(this.$throwException)
+        },
+        afterGetLookups ({ data }) {
+            this.$setItem('lookup', data)
+        }
     }
 }
 </script>

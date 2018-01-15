@@ -39,10 +39,10 @@ Vue.mixin({
             .then(fnConfirmation)
         },
         $setItem (key, value) {
-            sessionStorage.setItem(key, JSON.stringify(value))
+            localStorage.setItem(key, JSON.stringify(value))
         },
         $getItem (key) {
-            return JSON.parse(sessionStorage.getItem(key))
+            return JSON.parse(localStorage.getItem(key))
         },
         $isAdmin () {
             return this.$getItem('admin')

@@ -124,22 +124,16 @@ export default {
         }
     },
     mounted () {
-        this.onGetLookups()
+        let lookup = this.$getItem('lookup')
+        this.accountTypeLst = lookup.accountTypeLst
+        this.purchaserLst = lookup.purchaserLst
+        this.priorityLst = lookup.priorityLst
+        this.paymentMethodLst = lookup.paymentMethodLst
+        this.paymentTermLst = lookup.paymentTermLst
+        this.skillLst = lookup.skillLst
+        this.getAccountGroupList()
     },
     methods: {
-        onGetLookups () {
-            this.$http.get('lookup').then(this.onAfterGetLookups).catch(this.$throwException)
-        },
-        onAfterGetLookups ({ data }) {
-            // this.accountGroupLst = data.accountGroupLst
-            this.accountTypeLst = data.accountTypeLst
-            this.purchaserLst = data.purchaserLst
-            this.priorityLst = data.priorityLst
-            this.paymentMethodLst = data.paymentMethodLst
-            this.paymentTermLst = data.paymentTermLst
-            this.skillLst = data.skillLst
-            this.getAccountGroupList()
-        },
         getAccountGroupList () {
             this.$http.get('account-group').then(this.afterGetAccountGroupList).catch(this.$throwException)
         },
@@ -147,8 +141,12 @@ export default {
             this.accountGroupLst = data
         },
         onCancel (evt) {
-            this.payload = {}
-            this.$router.push({ name: 'balance.list' })
+            this.$askBefore((confirm) => {
+                if (confirm) {
+                    this.payload = {}
+                    this.$router.push({ name: 'balance.list' })
+                }
+            }, undefined, '')
         },
         onAfterSubmit ({ data }) {
             this.payload = {}

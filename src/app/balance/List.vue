@@ -43,7 +43,7 @@
                     </select>
                 </div>
                 <div class="col-md-2">
-                    <label for="select-skills">Compotência</label>
+                    <label for="select-skills">Competência</label>
                     <select id="select-skills" name="select-skills" class="form-control">
                         <option value="0" selected></option>
                         <option v-for="skill in skillLst" :value="skill.ski_id">{{ skill.ski_value }}</option>
@@ -84,7 +84,7 @@
                 <div v-if="balanceLst.length > 0">
                     <div class="datagrid-container">
                         <div class="datagrid-header bg-primary">
-                            <span>Compotência</span>
+                            <span>Competência</span>
                             <span>Tipo</span>
                             <span>Grupo</span>
                             <span>Prioridade</span>
@@ -139,24 +139,18 @@ export default {
         }
     },
     mounted () {
-        this.onGetLookups()
+        let lookup = this.$getItem('lookup')
+        this.accountTypeLst = lookup.accountTypeLst
+        this.purchaserLst = lookup.purchaserLst
+        this.priorityLst = lookup.priorityLst
+        this.paymentMethodLst = lookup.paymentMethodLst
+        this.paymentTermLst = lookup.paymentTermLst
+        this.skillLst = lookup.skillLst
+        this.getAccountGroupList()
     },
     methods: {
         onEdit (balance) {
             console.log(balance)
-        },
-        onGetLookups () {
-            this.$http.get('lookup').then(this.onAfterGetLookups).catch(this.$throwException)
-        },
-        onAfterGetLookups ({ data }) {
-            // this.accountGroupLst = data.accountGroupLst
-            this.accountTypeLst = data.accountTypeLst
-            this.purchaserLst = data.purchaserLst
-            this.priorityLst = data.priorityLst
-            this.paymentMethodLst = data.paymentMethodLst
-            this.paymentTermLst = data.paymentTermLst
-            this.skillLst = data.skillLst
-            this.getAccountGroupList()
         },
         getAccountGroupList () {
             this.$http.get('account-group').then(this.afterGetAccountGroupList).catch(this.$throwException)
