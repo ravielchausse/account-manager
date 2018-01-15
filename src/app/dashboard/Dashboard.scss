@@ -1,7 +1,17 @@
 #dashboard {
+
 	.card {
+		margin: 0 auto;
 		min-width: 240px;
 		width: 100%;
 		max-width: 320px;
+
+		img {
+			height: 200px;
+		}
+
+		div {
+			height: 140px;
+		}
 	}
 }

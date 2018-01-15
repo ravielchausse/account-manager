@@ -3,8 +3,8 @@ import Router from 'vue-router'
 
 import Dashboard from '@/app/dashboard/Main.vue'
 
-import Balance from '@/app/balance/Main.vue'
 import BalanceList from '@/app/balance/List.vue'
+import BalanceForm from '@/app/balance/Form.vue'
 
 import User from '@/user/User.vue'
 
@@ -26,15 +26,22 @@ export default new Router({
         {
             path: '/balance',
             name: 'balance.main',
-            component: Balance,
-            redirect: { name: 'balance.list' },
-            children: [
-                {
-                    path: '/balance/list',
-                    name: 'balance.list',
-                    component: BalanceList
-                }
-            ]
+            redirect: { name: 'balance.list' }
+        },
+        {
+            path: '/balance/list',
+            name: 'balance.list',
+            component: BalanceList
+        },
+        {
+            path: '/balance/store',
+            name: 'balance.store',
+            component: BalanceForm
+        },
+        {
+            path: '/balance/edit/:id',
+            name: 'balance.update',
+            component: BalanceForm
         },
         {
             path: '/user',

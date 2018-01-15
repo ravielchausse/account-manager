@@ -53,34 +53,15 @@
 	    background: inherit;
 	    left: 56px;
 	}
-	
-	.row {
-		padding: 3px;
-	}
 
-	.modal-container {
+	.form-group {
 
-		.form-group {
-
+		margin-bottom: 1px;
+	 	
+	 	label {
+			font-size: 12px;
+			font-weight: 600;
 			margin-bottom: 1px;
-		 	
-		 	label {
-				font-size: 12px;
-				font-weight: 600;
-				margin-bottom: 1px;
-			}
-		}
-
-		.row {
-			margin: 0;
-		}
-
-		.col-sm-1, .col-sm-2, .col-sm-3, 
-		.col-sm-4, .col-sm-5, .col-sm-6,
-		.col-sm-7, .col-sm-8, .col-sm-9,
-		.col-sm-12 {
-			margin: 0;		
-			padding: 3px;
 		}
 
 		input[type=date] {

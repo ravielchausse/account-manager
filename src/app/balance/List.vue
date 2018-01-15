@@ -25,9 +25,9 @@
             <div class="col-md-2">
                 <div class="row">
                     <div class="col-md-12">
-                        <button id="show-modal" class="btn btn-primary form-control" @click="showModal = true">
+                        <router-link tag="a" class="btn btn-primary btn-block" :to="{ name: 'balance.store' }">
                             Nova Compra
-                        </button>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -116,26 +116,12 @@
                 <div v-else class="alert alert-warning">Nenhum Registro Encontrado!</div>
             </div>
         </div>
-
-        <balance-form 
-            :showModal="showModal" 
-            :accountGroupLst="accountGroupLst" 
-            :accountTypeLst="accountTypeLst" 
-            :paymentMethodLst="paymentMethodLst" 
-            :paymentTermLst="paymentTermLst" 
-            :priorityLst="priorityLst" 
-            :purchaserLst="purchaserLst" 
-            :skillLst="skillLst" 
-            @reload="getList"
-            @close="showModal = false" />
     </div>
 </template>
 
 <script>
-import BalanceForm from './Form'
 export default {
     name: 'BalanceList',
-    components: { BalanceForm },
     data () {
         return {
             filter: {},
