@@ -1,10 +1,10 @@
 <template lang="html">
     <div id="balance">
         <p class="module-title">Nova Compra</p>
-        <hr>
         <form name="form_auth">
+            <hr>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="select-skills"><em>*</em> Competência: </label>
                         <select id="select-skills" name="select-skills" class="form-control" v-model="payload.ski_id">
@@ -13,13 +13,15 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="bal_date"><em>*</em> Data: </label>
                         <input type="date" id="bal_date" name="bal_date" class="form-control" v-model="payload.bal_date">
                     </div>
                 </div>
-                <div class="col-md-3">
+            </div>
+            <div class="row">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="select-payment-methods"><em>*</em> Forma de Pagamento: </label>
                         <select id="select-payment-methods" name="select-payment-methods" class="form-control" v-model="payload.pay_id">
@@ -28,7 +30,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="select-payment-terms"><em>*</em> Condição de Pagamento: </label>
                         <select id="select-payment-terms" name="select-payment-terms" class="form-control" v-model="payload.pat_id">
@@ -39,7 +41,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="select-account-groups"><em>*</em> Grupo de Contas: </label>
                         <select id="select-account-groups" name="select-account-groups" class="form-control" v-model="payload.agr_id">
@@ -48,7 +50,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="select-accounts-type"><em>*</em> Tipo de Contas: </label>
                         <select id="select-accounts-type" name="select-accounts-type" class="form-control" v-model="payload.acc_id">
@@ -57,7 +59,9 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-3">
+            </div>
+            <div class="row">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="select-priorities"><em>*</em> Prioridade: </label>
                         <select id="select-priorities" name="select-priorities" class="form-control" v-model="payload.pri_id">
@@ -66,7 +70,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="select-purchasers"><em>*</em> Comprador: </label>
                         <select id="select-purchasers" name="select-purchasers" class="form-control" v-model="payload.pur_id">
@@ -77,13 +81,13 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <div class="form-group">
                         <label for="bal_account"><em>*</em> Compra: </label>
                         <input type="text" id="bal_account" name="bal_account" class="form-control" v-model="payload.bal_account">
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="bal_value"><em>*</em> Valor: </label>
                         <div class="input-group">
@@ -92,10 +96,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+            </div>
+            <div class="row">
+                <div class="col-md-12">
                     <div class="form-group">
                         <label for="bal_comments">Observações: </label>
-                        <input type="text" id="bal_comments" name="bal_comments" class="form-control" v-model="payload.bal_comments">
+                        <textarea rows="2" id="bal_comments" name="bal_comments" class="form-control" v-model="payload.bal_comments"></textarea>
                     </div>
                 </div>
             </div>

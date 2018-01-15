@@ -54,22 +54,6 @@
 	    left: 56px;
 	}
 
-	.form-group {
-
-		margin-bottom: 1px;
-	 	
-	 	label {
-			font-size: 12px;
-			font-weight: 600;
-			margin-bottom: 1px;
-		}
-
-		input[type=date] {
-			line-height: 30px;
-			padding: 2px 15px;
-		}
-	}
-
 	.container-filter {
 	
 		background-color: #464a4c;
@@ -83,6 +67,27 @@
 			font-size: 13px;
 			font-weight: 400;
 			text-align: left;
+		}
+	}
+	
+	form {
+
+		max-width: 560px;
+
+		.form-group {
+
+			margin-bottom: 1px;
+		 	
+		 	label {
+				font-size: 12px;
+				font-weight: 600;
+				margin-bottom: 1px;
+			}
+
+			input[type=date] {
+				line-height: 30px;
+				padding: 2px 15px;
+			}
 		}
 	}
 }
