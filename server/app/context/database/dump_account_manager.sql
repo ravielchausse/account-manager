@@ -88,7 +88,7 @@ CREATE TABLE `bal_balance_sheets` (
     `bal_id_skills` INT(10) UNSIGNED NOT NULL,
     `bal_date` DATE NOT NULL,
     `bal_account` VARCHAR(100) NOT NULL,
-    `bal_value` DECIMAL(5 , 2 ) UNSIGNED NOT NULL DEFAULT '0.00',
+    `bal_value` DECIMAL(9, 2) UNSIGNED NOT NULL DEFAULT '0.00',
     `bal_continued` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0',
     `bal_comments` TEXT,
     `bal_status` BIT(1) NOT NULL DEFAULT 1,

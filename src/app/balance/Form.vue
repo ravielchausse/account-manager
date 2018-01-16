@@ -155,16 +155,13 @@ export default {
             if (this.isUpdate) this.getById()
         },
         onCancel (evt) {
-            this.$askBefore((confirm) => {
-                if (confirm) {
-                    this.payload = {}
-                    this.$router.push({ name: 'balance.list' })
-                }
-            }, undefined, '')
+            this.payload = {}
+            this.$router.push({ name: 'balance.list' })
         },
         onAfterSubmit ({ data }) {
             this.payload = {}
             this.$toasted.success('Compra salva com sucesso!').goAway(1500)
+            this.$router.push({ name: 'balance.list' })
         },
         onSubmit (evt) {
             if (this.isUpdate) {

@@ -64,16 +64,6 @@ module.exports = class BalanceContext extends Context {
         });
     }
 
-    save (balance) {
-        return new Promise((accept, reject) => {
-            let query = `
-            UPDATE bal_balance_sheets SET bal_account = ? WHERE bal_id = ?;
-            `;
-            let params = [balance.bal_account, balance.bal_id];
-            this.update(query, params).then(accept).catch(reject);
-        });
-    }
-
     store (balance) {
         return new Promise((accept, reject) => {
             let query = `

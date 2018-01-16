@@ -33,6 +33,6 @@ module.exports = class Balance {
         this.bal_account = payload.bal_account;
         this.bal_comments = payload.bal_comments;
         this.bal_date = payload.bal_date;
-        this.bal_value = payload.bal_value.replace(',', '.');
+        this.bal_value = Number(payload.bal_value.replace(',', ''));
     }
 }
