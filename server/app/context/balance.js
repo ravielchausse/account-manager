@@ -79,34 +79,70 @@ module.exports = class BalanceContext extends Context {
             let query = `
                 INSERT INTO bal_balance_sheets 
                 (
-                    bal_id_accounts_type,
                     bal_id_account_groups,
+                    bal_id_accounts_type,
                     bal_id_payment_methods,
                     bal_id_payment_terms,
                     bal_id_priorities,
                     bal_id_purchasers,
                     bal_id_skills,
-                    bal_date,
                     bal_account,
-                    bal_value,
-                    bal_comments
+                    bal_comments,
+                    bal_date,
+                    bal_value
                 ) 
                 VALUES (?,?,?,?,?,?,?,?,?,?,?);
             `;
             let params = [
-                balance.bal_id_accounts_type,
                 balance.bal_id_account_groups,
+                balance.bal_id_accounts_type,
                 balance.bal_id_payment_methods,
                 balance.bal_id_payment_terms,
                 balance.bal_id_priorities,
                 balance.bal_id_purchasers,
                 balance.bal_id_skills,
-                balance.bal_date,
                 balance.bal_account,
-                balance.bal_value,
-                balance.bal_comments
+                balance.bal_comments,
+                balance.bal_date,
+                balance.bal_value
             ];
             this.insert(query, params).then(accept).catch(reject);
+        });
+    }
+
+    edit (id, balance) {
+        return new Promise((accept, reject) => {
+            let query = `
+                UPDATE account_manager.bal_balance_sheets
+                SET
+                    bal_id_account_groups = ?,
+                    bal_id_accounts_type = ?,
+                    bal_id_payment_methods = ?,
+                    bal_id_payment_terms = ?,
+                    bal_id_priorities = ?,
+                    bal_id_purchasers = ?,
+                    bal_id_skills = ?,
+                    bal_account = ?,
+                    bal_comments = ?,
+                    bal_date = ?,
+                    bal_value = ?
+                WHERE bal_id = ?
+            `;
+            let params = [
+                balance.bal_id_account_groups,
+                balance.bal_id_accounts_type,
+                balance.bal_id_payment_methods,
+                balance.bal_id_payment_terms,
+                balance.bal_id_priorities,
+                balance.bal_id_purchasers,
+                balance.bal_id_skills,
+                balance.bal_account,
+                balance.bal_comments,
+                balance.bal_date,
+                balance.bal_value,
+                id
+            ];
+            this.update(query, params).then(accept).catch(reject);
         });
     }
 }

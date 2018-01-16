@@ -20,25 +20,26 @@ module.exports = {
         .then((balance) => res.status(200).json(balance))
         .catch($mixin.throwException);
     },
+
     store (req, res) {
         let balance = new BalanceModel();
 
-        balance.bal_id_accounts_type = req.body.acc_id;
-        balance.bal_id_account_groups = req.body.agr_id;
-        balance.bal_id_payment_methods = req.body.pay_id;
-        balance.bal_id_payment_terms = req.body.pat_id;
-        balance.bal_id_priorities = req.body.pri_id;
-        balance.bal_id_purchasers = req.body.pur_id;
-        balance.bal_id_skills = req.body.ski_id;
-
-        balance.bal_account = req.body.bal_account;
-        balance.bal_comments = req.body.bal_comments;
-        balance.bal_date = req.body.bal_date;
-        balance.bal_value = req.body.bal_value.replace(',', '.');
+        balance.build(req.body);
 
         let context = new BalanceContext();
         context.store(balance)
         .then((id) => { res.status(201).json({ id }) })
+        .catch($mixin.throwException);
+    },
+
+    edit (req, res) {
+        let balance = new BalanceModel();
+
+        balance.build(req.body);
+
+        let context = new BalanceContext();
+        context.edit(req.params.id, balance)
+        .then((update) => { res.status(201).json({ update }) })
         .catch($mixin.throwException);
     }
 }

@@ -25,5 +25,6 @@ module.exports = (app) => {
 
     app.get("/balance", BalanceController.index);
     app.get("/balance/:id", BalanceController.getById);
-    app.post("/balance", BalanceController.store);    
+    app.post("/balance", BalanceController.store);
+    app.put("/balance/:id", BalanceController.edit);
 };

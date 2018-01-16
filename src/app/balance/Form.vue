@@ -1,6 +1,6 @@
 <template lang="html">
     <div id="balance">
-        <p class="module-title">Nova Compra</p>
+        <h1 class="title">Nova Compra</h1>
         <form name="form_auth">
             <hr>
             <div class="row">
@@ -108,7 +108,7 @@
             <hr>
             <div class="btn-form">
                 <button class="btn btn-danger" @click.prevent.default="onCancel($event)">Cancelar</button>
-                <button class="btn btn-success" @click="onSubmit($event)">Cadastrar</button>
+                <button class="btn btn-success" @click.prevent.default="onSubmit($event)">Salvar</button>
             </div>
         </form>
     </div>
