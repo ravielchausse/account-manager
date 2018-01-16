@@ -97,8 +97,7 @@
                         </div>
                         <template v-for="balance in balanceLst" :id="balance.bal_id">
                             <div class="datagrid-context" :class="{ 'bg-selected': idSelected == balance.bal_id }"
-                                @click="idSelected == balance.bal_id ? idSelected = 0 : idSelected = balance.bal_id"
-                                @dblclick="onEdit(balance)">
+                                @click="onSelected($event, balance.bal_id)" @dblclick="onEdit($event, balance.bal_id)">
                                 <span>{{ balance.ski_value }}</span>
                                 <span>{{ balance.acc_name }}</span>
                                 <span>{{ balance.agr_name }}</span>
@@ -149,8 +148,11 @@ export default {
         this.getAccountGroupList()
     },
     methods: {
-        onEdit (balance) {
-            console.log(balance)
+        onSelected (evt, id) {
+            this.idSelected === id ? this.idSelected = 0 : this.idSelected = id
+        },
+        onEdit (evt, id) {
+            this.$router.push({ name: 'balance.update', params: { id } })
         },
         getAccountGroupList () {
             this.$http.get('account-group').then(this.afterGetAccountGroupList).catch(this.$throwException)

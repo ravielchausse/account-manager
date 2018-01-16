@@ -140,11 +140,19 @@ export default {
         this.getAccountGroupList()
     },
     methods: {
+        getById () {
+            this.$http.get(`balance/${this.idEdit}`).then(this.afterGetById).catch(this.$throwException)
+        },
+        afterGetById ({ data }) {
+            this.payload = data
+            this.payload.bal_date = this.$options.filters['formatDateEn'](this.payload.bal_date)
+        },
         getAccountGroupList () {
             this.$http.get('account-group').then(this.afterGetAccountGroupList).catch(this.$throwException)
         },
         afterGetAccountGroupList ({ data }) {
             this.accountGroupLst = data
+            if (this.isUpdate) this.getById()
         },
         onCancel (evt) {
             this.$askBefore((confirm) => {
@@ -159,7 +167,11 @@ export default {
             this.$toasted.success('Compra salva com sucesso!').goAway(1500)
         },
         onSubmit (evt) {
-            this.$http.post('balance', this.payload).then(this.onAfterSubmit).catch(this.$throwException)
+            if (this.isUpdate) {
+                this.$http.put(`balance/${this.idEdit}`, this.payload).then(this.onAfterSubmit).catch(this.$throwException)
+            } else {
+                this.$http.post('balance', this.payload).then(this.onAfterSubmit).catch(this.$throwException)
+            }
         }
     }
 }

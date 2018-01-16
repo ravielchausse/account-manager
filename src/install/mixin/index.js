@@ -4,6 +4,14 @@ import swal from 'sweetalert'
 import querystring from 'querystring'
 
 Vue.mixin({
+    computed: {
+        idEdit () {
+            return this.$route.params.id
+        },
+        isUpdate () {
+            return this.$route.name.indexOf('update') > -1
+        }
+    },
     methods: {
         $urlDecode (payload) {
             return querystring.decode(payload)

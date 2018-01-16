@@ -134,6 +134,9 @@ module.exports = class GenericContext {
         });
     }
 
+    /**
+    * @author Raviel Chausse Silveira
+    */
     makeObject(attributes) {
         try 
         {
@@ -145,6 +148,9 @@ module.exports = class GenericContext {
         }
     }
 
+    /**
+    * @author Raviel Chausse Silveira
+    */
     insert(query, params) {
         return new Promise((accept, reject) => {
             try 
@@ -167,6 +173,9 @@ module.exports = class GenericContext {
         });
     }
 
+    /**
+    * @author Raviel Chausse Silveira
+    */
     update(query, params) {
         return new Promise((accept, reject) => {
             try 
@@ -189,6 +198,9 @@ module.exports = class GenericContext {
         });
     }
 
+    /**
+    * @author Raviel Chausse Silveira
+    */
     delete(id) {
         return new Promise((accept, reject) => {
             try 
@@ -202,6 +214,9 @@ module.exports = class GenericContext {
         });
     }
 
+    /**
+    * @author Raviel Chausse Silveira
+    */
     get(query, params) {
         return new Promise((accept, reject) => {
             try 
@@ -215,6 +230,34 @@ module.exports = class GenericContext {
                     else
                     {
                         accept(results);
+                    }
+                    this.close();
+                });
+            } 
+            catch (e) 
+            {
+                this.close();
+                reject(e);
+            }
+        });
+    }
+
+    /**
+    * @author Raviel Chausse Silveira
+    */
+    getOne(query, params) {
+        return new Promise((accept, reject) => {
+            try 
+            {
+                this.open();
+                this.context.query(query, params, (err, results) => {
+                    if (err) 
+                    {
+                        reject(err);
+                    }
+                    else
+                    {
+                        accept(results[0]);
                     }
                     this.close();
                 });

@@ -24,5 +24,6 @@ module.exports = (app) => {
     app.post("/account-group", AccountGroupController.store);
 
     app.get("/balance", BalanceController.index);
+    app.get("/balance/:id", BalanceController.getById);
     app.post("/balance", BalanceController.store);    
 };

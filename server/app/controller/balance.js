@@ -14,6 +14,12 @@ module.exports = {
         .catch($mixin.throwException);
     },
 
+    getById (req, res) {
+        let context = new BalanceContext();
+        context.getById(req.params.id)
+        .then((balance) => res.status(200).json(balance))
+        .catch($mixin.throwException);
+    },
     store (req, res) {
         let balance = new BalanceModel();
 
