@@ -92,7 +92,7 @@
                         <label for="bal_value"><em>*</em> Valor: </label>
                         <div class="input-group">
                             <div class="input-group-addon">R$</div>
-                            <input type="text" id="bal_value" name="bal_value" class="form-control" v-model="payload.bal_value">
+                            <input type="text" id="bal_value" name="bal_value" class="form-control" v-money="'money'" v-model="payload.bal_value">
                         </div>
                     </div>
                 </div>
