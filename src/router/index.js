@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import AfterEach from './AfterEach.js'
+import BeforeEach from './BeforeEach.js'
+
 import Dashboard from '@/app/dashboard/Main.vue'
 
 import BalanceList from '@/app/balance/List.vue'
@@ -12,7 +15,7 @@ import AccountGroup from '@/foundation/account-group/AccountGroup.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
     routes: [
         {
             path: '/',
@@ -55,3 +58,9 @@ export default new Router({
         }
     ]
 })
+
+router.afterEach(AfterEach)
+
+router.beforeEach(BeforeEach)
+
+export default router

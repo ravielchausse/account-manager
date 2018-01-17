@@ -22,14 +22,26 @@
                 text-align: left;
                 width: 25%;
                 padding-left: 12px;
-                a.dashboard {
-                    text-decoration: none;
-                    color: #fff;
-                    font-size: 32px;
-                    padding: 12px;
-                    &:hover {
-                        background-color: #000;
-                        color: #0275d8;
+                a {
+                    line-height: 44px;
+                    padding: 12px 20px;
+                    &.dashboard {
+                        text-decoration: none;
+                        color: #fff;
+                        font-size: 24px;
+                        font-weight: 500;
+                        &:hover {
+                            background-color: #000;
+                            color: #0275d8;
+                        }
+                        span {
+                            margin-left: 2px;
+                            vertical-align: sub;
+                        }
+                    }
+                    &.router-link-active {
+                        background-color: #292b2c;
+                        color: #5cb85c;
                     }
                 }
             }

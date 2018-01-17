@@ -5,7 +5,8 @@
                 <div class="row">
                     <div class="home">
                         <router-link tag="a" class="dashboard" :to="{ name: 'dashboard.main' }">
-                            Dashboard
+                            <img src="static/images/avatar/32x32.png" alt="avatar">
+                            <span>INÍCIO</span>
                         </router-link>
                     </div>
                     <div class="menu">
