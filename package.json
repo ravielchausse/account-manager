@@ -22,7 +22,8 @@
     "vue-router": "^3.0.1",
     "vue-select": "^2.3.3",
     "vue-the-mask": "^0.11.1",
-    "vue-toasted": "^1.1.24"
+    "vue-toasted": "^1.1.24",
+    "xlsx": "^0.11.17"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.5",

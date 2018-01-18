@@ -1,7 +1,17 @@
 <template lang="html">
     <div id="balance">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <select id="select-skills" name="select-skills" class="form-control">
+                            <option value="0" selected></option>
+                            <option v-for="skill in skillLst" :value="skill.ski_id">{{ skill.ski_value }}</option>
+                        </select>
+                    </div>
+                </div>            
+            </div>
+            <div class="col-md-4">
                 <div class="row">
                     <div class="col-md-12">
                         <input type="text" class="form-control" placeholder="Busque por compra e/ou observação...">
@@ -11,7 +21,7 @@
             <div class="col-md-2">
                 <div class="row">
                     <div class="col-md-6">
-                        <button class="btn btn-primary btn-block" @click.prevent.default="onSearch($event)">
+                        <button class="btn btn-success btn-block" @click.prevent.default="onSearch($event)">
                             <icon name="search" scale="1" />
                         </button>
                     </div>
@@ -25,9 +35,18 @@
             <div class="col-md-2">
                 <div class="row">
                     <div class="col-md-12">
-                        <router-link tag="a" class="btn btn-primary btn-block" :to="{ name: 'balance.store' }">
+                        <router-link tag="a" class="btn btn-success btn-block" :to="{ name: 'balance.store' }">
                             Nova Compra
                         </router-link>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary btn-block" @click.prevent.default="onDownload($event)">
+                            Download 
+                        </button>
                     </div>
                 </div>
             </div>
@@ -43,10 +62,10 @@
                     </select>
                 </div>
                 <div class="col-md-2">
-                    <label for="select-skills">Competência</label>
+                    <label for="select-skills">Tipo de Contas</label>
                     <select id="select-skills" name="select-skills" class="form-control">
                         <option value="0" selected></option>
-                        <option v-for="skill in skillLst" :value="skill.ski_id">{{ skill.ski_value }}</option>
+                        <option v-for="accountType in accountTypeLst" :value="accountType.acc_id">{{ accountType.acc_value }}</option>
                     </select>
                 </div>
                 <div class="col-md-2">
@@ -119,6 +138,7 @@
 </template>
 
 <script>
+import XLSX from 'xlsx'
 export default {
     name: 'BalanceList',
     data () {
@@ -170,6 +190,41 @@ export default {
         },
         onSearch (evt) {
             console.log({ evt })
+        },
+        onDownload (evt) {
+            /* starting from this data */
+            let data = []
+            this.balanceLst.forEach((balance) => {
+                data.push({
+                    'Competência': balance.ski_value,
+                    'Tipo': balance.acc_name,
+                    'Grupo': balance.agr_name,
+                    'Prioridade': balance.pri_name,
+                    'Pagamento': balance.pay_name,
+                    'Condição': balance.pat_name,
+                    'Comprador': balance.pur_name,
+                    'Compra': balance.bal_account,
+                    'Data': balance.bal_date,
+                    'Valor': balance.bal_value
+                })
+            })
+
+            /* generate a worksheet */
+            let ws = XLSX.utils.json_to_sheet(data)
+
+            /* add to workbook */
+            let wb = XLSX.utils.book_new()
+            XLSX.utils.book_append_sheet(wb, ws, 'Fluxo de Caixa')
+
+            /* write workbook (use type 'array' for ArrayBuffer) */
+            let wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' })
+
+            /* generate a download */
+            let link = document.createElement('a')
+            let blob = new Blob([wbout], { type: 'application/octet-stream' })
+            link.href = window.URL.createObjectURL(blob)
+            link.download = 'Fluxo de Caixa.xlsx'
+            link.click()
         }
     }
 }
