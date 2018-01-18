@@ -1,17 +1,16 @@
 <template lang="html">
     <div id="balance">
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <div class="row">
                     <div class="col-md-12">
-                        <select id="select-skills" name="select-skills" class="form-control">
-                            <option value="0" selected></option>
+                        <select id="select-skills" name="select-skills" class="form-control" v-model="skillCurrent">
                             <option v-for="skill in skillLst" :value="skill.ski_id">{{ skill.ski_value }}</option>
                         </select>
                     </div>
                 </div>            
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="row">
                     <div class="col-md-12">
                         <input type="text" class="form-control" placeholder="Busque por compra e/ou observação...">
@@ -145,6 +144,7 @@ export default {
         return {
             filter: {},
             idSelected: 0,
+            skillCurrent: 0,
             balanceLst: [],
             showFilter: false,
             showModal: false,
@@ -165,6 +165,12 @@ export default {
         this.paymentMethodLst = lookup.paymentMethodLst
         this.paymentTermLst = lookup.paymentTermLst
         this.skillLst = lookup.skillLst
+
+        let skillCurrent = this.$options.filters['skillCurrent']()
+        this.skillCurrent = lookup.skillLst.filter((skill) => {
+            return skill.ski_value === skillCurrent
+        })[0].ski_id
+
         this.getAccountGroupList()
     },
     methods: {
@@ -197,15 +203,16 @@ export default {
             this.balanceLst.forEach((balance) => {
                 data.push({
                     'Competência': balance.ski_value,
-                    'Tipo': balance.acc_name,
-                    'Grupo': balance.agr_name,
+                    'Tipo de Conta': balance.acc_name,
+                    'Grupo de Conta': balance.agr_name,
                     'Prioridade': balance.pri_name,
-                    'Pagamento': balance.pay_name,
-                    'Condição': balance.pat_name,
+                    'Forma de Pagamento': balance.pay_name,
+                    'Condição de Pagamento': balance.pat_name,
                     'Comprador': balance.pur_name,
                     'Compra': balance.bal_account,
                     'Data': balance.bal_date,
-                    'Valor': balance.bal_value
+                    'Valor da Compra': balance.bal_value,
+                    'Observação': balance.bal_comments
                 })
             })
 

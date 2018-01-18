@@ -17,6 +17,10 @@ Vue.filter('formatDateEn', function (value) {
     }
 })
 
+Vue.filter('skillCurrent', function () {
+    return moment().format('YYYY.MM')
+})
+
 Vue.filter('momentFormat', function (value, formatOutput = 'dddd', formatInput = 'YYYY-MM-DD') {
     if (value) {
         return moment(value, formatInput).format(formatOutput)
