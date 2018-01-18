@@ -4,7 +4,7 @@ import Router from 'vue-router'
 import AfterEach from './AfterEach.js'
 import BeforeEach from './BeforeEach.js'
 
-import Dashboard from '@/app/dashboard/Main.vue'
+import Dashboard from '@/app/dashboard/Dashboard.vue'
 
 import BalanceList from '@/app/balance/List.vue'
 import BalanceForm from '@/app/balance/Form.vue'

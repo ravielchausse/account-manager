@@ -5,13 +5,19 @@
 		min-width: 240px;
 		width: 100%;
 		max-width: 320px;
+		cursor: pointer;
 
 		img {
 			height: 200px;
+			border-bottom: 3px #fafafa solid;
 		}
 
 		div {
 			height: 140px;
+		}
+
+		&:hover {
+			border: 3px #464a4c solid;			
 		}
 	}
 }
