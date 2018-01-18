@@ -1,7 +1,7 @@
 <template lang="html">
     <div id="balance">
         <div class="row">
-            <div class="col-md-1">
+            <div class="col-md-2">
                 <div class="row">
                     <div class="col-md-12">
                         <select id="select-skills" name="select-skills" class="form-control" v-model="skillCurrent">
@@ -10,7 +10,7 @@
                     </div>
                 </div>            
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <div class="row">
                     <div class="col-md-12">
                         <input type="text" class="form-control" placeholder="Busque por compra e/ou observação...">
