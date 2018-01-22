@@ -189,7 +189,7 @@ export default {
         },
         getList () {
             this.filter = {}
-            this.$http.get('balance').then(this.afterGetList).catch(this.$throwException)
+            this.$http.get(`balance?ski_id=${this.skillCurrent}`).then(this.afterGetList).catch(this.$throwException)
         },
         afterGetList ({ data }) {
             this.balanceLst = data
