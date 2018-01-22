@@ -61,12 +61,12 @@ Vue.mixin({
             }
             let { response } = error
             if (response && response.status === 500) {
-                let { ExceptionMessage, message } = response.data
-                return swal('Opsss...', ExceptionMessage || message || 'Error Internal Server', 'error')
+                let { message } = response.data
+                return swal('Opsss...', message || 'Error Internal Server', 'error')
             }
-            let { ExceptionMessage, message } = error
-            if (typeof message === 'string') {
-                return swal('Opsss...', ExceptionMessage || message || 'Error Internal Server', 'error')
+            if (response && response.status === 400) {
+                let errors = response.data
+                return swal('Opsss...', errors[0].msg || 'Bad Request', 'warning')
             }
             return swal('Opsss...', 'Error Internal Server', 'error')
         }
