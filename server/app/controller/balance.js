@@ -9,7 +9,7 @@ const BalanceContext = require('../context/balance.js');
 module.exports = {
 	index (req, res) { 
         let context = new BalanceContext();
-        context.list()
+        context.list(req.query)
         .then((balanceLst) => res.status(200).json(balanceLst))
         .catch($mixin.throwException);
     },

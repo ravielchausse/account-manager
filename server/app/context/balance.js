@@ -38,7 +38,7 @@ module.exports = class BalanceContext extends Context {
         });
     }
 
-    list (filter = []) {
+    list (filter) {
         return new Promise((accept, reject) => {
             let query = `
                 SELECT bal_id,
@@ -59,8 +59,13 @@ module.exports = class BalanceContext extends Context {
                 INNER JOIN pri_priorities ON pri_id = bal_id_priorities
                 INNER JOIN pur_purchasers ON pur_id = bal_id_purchasers
                 INNER JOIN ski_skills ON ski_id = bal_id_skills
+                WHERE ski_id = ?
             `;
-            this.get(query, filter).then(accept).catch(reject);
+            console.log({ filter });
+            let params = [
+                filter.ski_id
+            ];
+            this.get(query, params).then(accept).catch(reject);
         });
     }
 
