@@ -55,42 +55,42 @@
             <div class="row">
                 <div class="col-md-2">
                     <label for="select-account">Grupo de Contas</label>
-                    <select id="select-account" name="select-account" class="form-control">
+                    <select id="select-account" name="select-account" class="form-control" v-model="filter.agr_id">
                         <option value="0" selected>Selecione</option>
                         <option v-for="accountGroup in accountGroupLst" :value="accountGroup.agr_id">{{ accountGroup.agr_name }}</option>
                     </select>
                 </div>
                 <div class="col-md-2">
                     <label for="select-skills">Tipo de Contas</label>
-                    <select id="select-skills" name="select-skills" class="form-control">
+                    <select id="select-skills" name="select-skills" class="form-control" v-model="filter.acc_id">
                         <option value="0" selected>Selecione</option>
-                        <option v-for="accountType in accountTypeLst" :value="accountType.acc_id">{{ accountType.acc_value }}</option>
+                        <option v-for="accountType in accountTypeLst" :value="accountType.acc_id">{{ accountType.acc_name }}</option>
                     </select>
                 </div>
                 <div class="col-md-2">
                     <label for="select-purchasers">Comprador</label>
-                    <select id="select-purchasers" name="select-purchasers" class="form-control">
+                    <select id="select-purchasers" name="select-purchasers" class="form-control" v-model="filter.pur_id">
                         <option value="0" selected>Selecione</option>
                         <option v-for="purchaser in purchaserLst" :value="purchaser.pur_id">{{ purchaser.pur_name }}</option>
                     </select>
                 </div>
                 <div class="col-md-2">
                     <label for="select-priorities">Prioridade</label>
-                    <select id="select-priorities" name="select-priorities" class="form-control">
+                    <select id="select-priorities" name="select-priorities" class="form-control" v-model="filter.pri_id">
                         <option value="0" selected>Selecione</option>
                         <option v-for="priority in priorityLst" :value="priority.pri_id">{{ priority.pri_name }}</option>
                     </select>
                 </div>
                 <div class="col-md-2">
                     <label for="select-payment-methods">Forma de Pagamento</label>
-                    <select id="select-payment-methods" name="select-payment-methods" class="form-control">
+                    <select id="select-payment-methods" name="select-payment-methods" class="form-control" v-model="filter.pay_id">
                         <option value="0" selected>Selecione</option>
                         <option v-for="paymentMethod in paymentMethodLst" :value="paymentMethod.pay_id">{{ paymentMethod.pay_name }}</option>
                     </select>
                 </div>
                 <div class="col-md-2">
                     <label for="select-payment-terms">Condição de Pagamento</label>
-                    <select id="select-payment-terms" name="select-payment-terms" class="form-control">
+                    <select id="select-payment-terms" name="select-payment-terms" class="form-control" v-model="filter.pat_id">
                         <option value="0" selected>Selecione</option>
                         <option v-for="paymentTerm in paymentTermLst" :value="paymentTerm.pat_id">{{ paymentTerm.pat_name }}</option>
                     </select>
@@ -105,7 +105,7 @@ export default {
     name: 'BalanceFilter',
     data () {
         return {
-            filter: {},
+            filter: { agr_id: '0', acc_id: '0', pur_id: '0', pri_id: '0', pay_id: '0', pat_id: '0' },
             showFilter: false,
             skillCurrent: 0,
             accountGroupLst: [],
@@ -130,7 +130,7 @@ export default {
         this.skillCurrent = lookup.skillLst.filter((skill) => {
             return skill.ski_value === skillCurrent
         })[0].ski_id
-        this.filter = { ski_id: this.skillCurrent }
+        this.filter = { ski_id: this.skillCurrent, agr_id: '0', acc_id: '0', pur_id: '0', pri_id: '0', pay_id: '0', pat_id: '0' }
 
         this.getAccountGroupList()
     },
@@ -153,7 +153,7 @@ export default {
     },
     watch: {
         skillCurrent (value) {
-            this.filter = { ski_id: value }
+            this.filter = { ski_id: this.skillCurrent, agr_id: '0', acc_id: '0', pur_id: '0', pri_id: '0', pay_id: '0', pat_id: '0' }
             this.getList()
         }
     }

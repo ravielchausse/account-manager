@@ -68,6 +68,36 @@ module.exports = class BalanceContext extends Context {
                 params.push(`%${filter.query}%`);
             }
 
+            if (filter.acc_id > 0) {
+                query += " AND acc_id = ? ";
+                params.push(filter.acc_id);
+            }
+
+            if (filter.agr_id > 0) {
+                query += " AND agr_id = ? ";
+                params.push(filter.agr_id);
+            }
+
+            if (filter.pay_id > 0) {
+                query += " AND pay_id = ? ";
+                params.push(filter.pay_id);
+            }
+
+            if (filter.pat_id > 0) {
+                query += " AND pat_id = ? ";
+                params.push(filter.pat_id);
+            }
+
+            if (filter.pri_id > 0) {
+                query += " AND pri_id = ? ";
+                params.push(filter.pri_id);
+            }
+
+            if (filter.pur_id > 0) {
+                query += " AND pur_id = ? ";
+                params.push(filter.pur_id);
+            }
+
             this.get(query, params).then(accept).catch(reject);
         });
     }
