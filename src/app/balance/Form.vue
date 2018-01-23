@@ -146,6 +146,7 @@ export default {
         afterGetById ({ data }) {
             this.payload = data
             this.payload.bal_date = this.$options.filters['formatDateEn'](this.payload.bal_date)
+            this.payload.bal_value = this.$options.filters['formatMoney'](this.payload.bal_value)
         },
         getAccountGroupList () {
             this.$http.get('account-group').then(this.afterGetAccountGroupList).catch(this.$throwException)

@@ -144,6 +144,9 @@ export default {
         afterGetAccountGroupList ({ data }) {
             this.accountGroupLst = data
         },
+        onDownload (evt) {
+            this.$emit('onDownload', evt)
+        },
         onSearch (evt) {
             this.getList()
         }

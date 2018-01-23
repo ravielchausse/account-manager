@@ -1,6 +1,6 @@
 <template lang="html">
     <div id="balance">
-        <balance-filter @getList="getList"></balance-filter>
+        <balance-filter @getList="getList" @onDownload="onDownload"></balance-filter>
         <div class="row">
             <div class="col-md-12">
                 <template v-if="balanceLst.length > 0">
@@ -79,7 +79,9 @@ export default {
         },
         afterGetList ({ data }) {
             this.balanceLst = data
-            this.balanceTotal = data.reduce((total, item) => { return total.bal_value + item.bal_value })
+            if (data.length > 0) {
+                this.balanceTotal = data.map((item) => { return item.bal_value }).reduce((total, value) => { return total + value })
+            }
         },
         onDownload (evt) {
             /* starting from this data */
