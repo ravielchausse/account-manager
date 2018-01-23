@@ -105,7 +105,7 @@ export default {
     name: 'BalanceFilter',
     data () {
         return {
-            filter: { agr_id: '0', acc_id: '0', pur_id: '0', pri_id: '0', pay_id: '0', pat_id: '0' },
+            filter: {},
             showFilter: false,
             skillCurrent: 0,
             accountGroupLst: [],
