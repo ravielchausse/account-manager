@@ -13,7 +13,7 @@
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-md-12">
-                        <input type="text" class="form-control" placeholder="Busque por compra e/ou observação..." v-model="filter.query">
+                        <input type="text" class="form-control" placeholder="Busque por compra" v-model="filter.query">
                     </div>
                 </div>
             </div>
@@ -143,13 +143,14 @@ export default {
         },
         afterGetAccountGroupList ({ data }) {
             this.accountGroupLst = data
-            this.getList()
-        },
-        onSkillChange (evt) {
-            // this.filter = { ski_id: this.skillCurrent }
-            // this.getList()
         },
         onSearch (evt) {
+            this.getList()
+        }
+    },
+    watch: {
+        skillCurrent (value) {
+            this.filter = { ski_id: value }
             this.getList()
         }
     }

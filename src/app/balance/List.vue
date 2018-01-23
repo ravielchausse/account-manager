@@ -3,7 +3,7 @@
         <balance-filter @getList="getList"></balance-filter>
         <div class="row">
             <div class="col-md-12">
-                <div v-if="balanceLst.length > 0">
+                <template v-if="balanceLst.length > 0">
                     <div class="datagrid-container">
                         <div class="datagrid-header bg-primary">
                             <span>Competência</span>
@@ -32,8 +32,20 @@
                                 <span>{{ balance.bal_value | formatMoney }}</span>
                             </div>
                         </template>
+                        <div class="datagrid-footer">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span class="label">Total:</span>
+                            <span class="value">{{ balanceTotal | formatMoney }}</span>
+                        </div>
                     </div>
-                </div>
+                </template>
                 <div v-else class="alert alert-warning">Nenhum Registro Encontrado!</div>
             </div>
         </div>
@@ -51,7 +63,8 @@ export default {
     data () {
         return {
             idSelected: 0,
-            balanceLst: []
+            balanceLst: [],
+            balanceTotal: 0
         }
     },
     methods: {
@@ -66,6 +79,7 @@ export default {
         },
         afterGetList ({ data }) {
             this.balanceLst = data
+            this.balanceTotal = data.reduce((total, item) => { return total.bal_value + item.bal_value })
         },
         onDownload (evt) {
             /* starting from this data */
