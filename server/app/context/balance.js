@@ -61,10 +61,13 @@ module.exports = class BalanceContext extends Context {
                 INNER JOIN ski_skills ON ski_id = bal_id_skills
                 WHERE ski_id = ?
             `;
-            console.log({ filter });
-            let params = [
-                filter.ski_id
-            ];
+            let params = [filter.ski_id];
+
+            if (filter.query) {
+                query += " AND bal_account LIKE ? ";
+                params.push(`%${filter.query}%`);
+            }
+
             this.get(query, params).then(accept).catch(reject);
         });
     }
